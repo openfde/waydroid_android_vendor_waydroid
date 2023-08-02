@@ -1,0 +1,26 @@
+From f30199bfcab5d8727de8ec32ea2135439c530fde Mon Sep 17 00:00:00 2001
+From: tb <tangbiao1824@phytium.com.cn>
+Date: Wed, 2 Aug 2023 09:35:45 +0800
+Subject: [PATCH 2/3] add phytium check
+
+Change-Id: I281b326ebc804d2281a51c7f9118d7fbb20f5f4f
+---
+ envsetup.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/envsetup.sh b/envsetup.sh
+index 47ae6f1..405b291 100644
+--- a/envsetup.sh
++++ b/envsetup.sh
+@@ -146,6 +146,8 @@ function check_product()
+     fi
+     if (echo -n $1 | grep -q -e "^lineage_") ; then
+         LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^lineage_//g')
++    elif (echo -n $1 | grep -q -e "^phytium_") ;then
++	      LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^phytium_//g')
+     else
+         LINEAGE_BUILD=
+     fi
+-- 
+2.34.1
+
