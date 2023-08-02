@@ -1,0 +1,61 @@
+From 759a32d4f113e9c3a12af507c632648cbf6950ee Mon Sep 17 00:00:00 2001
+From: pengtiegang <pengtiegang1842@phytium.com.cn>
+Date: Wed, 2 Aug 2023 15:20:59 +0800
+Subject: [PATCH] maximize window horizontal fill layout not screen rotation
+
+Change-Id: I38ee13f65ce464d165124a33dbdc1b66743e73bc
+---
+ .../core/java/com/android/server/wm/DisplayContent.java    | 4 ++++
+ .../core/java/com/android/server/wm/DisplayRotation.java   | 7 ++++++-
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/services/core/java/com/android/server/wm/DisplayContent.java b/services/core/java/com/android/server/wm/DisplayContent.java
+index f1b110de..62da5554 100644
+--- a/services/core/java/com/android/server/wm/DisplayContent.java
++++ b/services/core/java/com/android/server/wm/DisplayContent.java
+@@ -30,6 +30,7 @@ import static android.app.WindowConfiguration.WINDOWING_MODE_SPLIT_SCREEN_SECOND
+ import static android.app.WindowConfiguration.WINDOWING_MODE_UNDEFINED;
+ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSET;
+ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_USER;
++import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+ import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+ import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
+ import static android.content.res.Configuration.ORIENTATION_UNDEFINED;
+@@ -2396,6 +2397,9 @@ class DisplayContent extends WindowContainer<DisplayContent.DisplayChildWindowCo
+     @ScreenOrientation
+     @Override
+     int getOrientation() {
++        if(true){
++            return SCREEN_ORIENTATION_LANDSCAPE;
++        }
+         mLastOrientationSource = null;
+ 
+         if (mIgnoreRotationForApps) {
+diff --git a/services/core/java/com/android/server/wm/DisplayRotation.java b/services/core/java/com/android/server/wm/DisplayRotation.java
+index b581d49b..210ca9b2 100644
+--- a/services/core/java/com/android/server/wm/DisplayRotation.java
++++ b/services/core/java/com/android/server/wm/DisplayRotation.java
+@@ -123,7 +123,8 @@ public class DisplayRotation {
+      * @see #updateRotationUnchecked
+      */
+     @Surface.Rotation
+-    private int mRotation;
++    private int mRotation = 0;
++
+ 
+     @VisibleForTesting
+     int mLandscapeRotation;  // default landscape
+@@ -407,6 +408,10 @@ public class DisplayRotation {
+      *         THE SCREEN.
+      */
+     boolean updateRotationUnchecked(boolean forceUpdate) {
++        //add
++        if (true) {
++            return true;
++        }//end
+         final int displayId = mDisplayContent.getDisplayId();
+         if (!forceUpdate) {
+             if (mDeferredRotationPauseCount > 0) {
+-- 
+2.34.1
+
