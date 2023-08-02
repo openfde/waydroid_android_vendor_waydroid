@@ -1,0 +1,27 @@
+From 478c880920acc4072edb8b453240a3c9131b07c9 Mon Sep 17 00:00:00 2001
+From: tb <tangbiao1824@phytium.com.cn>
+Date: Wed, 2 Aug 2023 09:40:26 +0800
+Subject: [PATCH 3/3] decrease BUILD_NUMBER length so ro.build.fingerprint be
+ decreased
+
+Change-Id: Ic38e2320b8e7a9ba7645d75c6189677029dc9647
+---
+ core/version_defaults.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/version_defaults.mk b/core/version_defaults.mk
+index 6c8c4dd..0b0b014 100644
+--- a/core/version_defaults.mk
++++ b/core/version_defaults.mk
+@@ -294,7 +294,7 @@ ifndef BUILD_NUMBER
+   # If no BUILD_NUMBER is set, create a useful "I am an engineering build
+   # from this date/time" value.  Make it start with a non-digit so that
+   # anyone trying to parse it as an integer will probably get "0".
+-  BUILD_NUMBER := eng.$(shell echo $${BUILD_USERNAME:0:6}).$(shell $(DATE) +%Y%m%d.%H%M%S)
++  BUILD_NUMBER := $(shell $(DATE) +%Y%m%d.%H%M%S)
+   HAS_BUILD_NUMBER := false
+ endif
+ .KATI_READONLY := BUILD_NUMBER HAS_BUILD_NUMBER
+-- 
+2.34.1
+
