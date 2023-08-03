@@ -1,0 +1,26 @@
+From cc439c3af04bfd4c58f944433f8cc8c51241d5a2 Mon Sep 17 00:00:00 2001
+From: pengtiegang <pengtiegang1842@phytium.com.cn>
+Date: Thu, 3 Aug 2023 15:00:01 +0800
+Subject: [PATCH] fix when maximize window decorcaptionview not display
+
+Change-Id: Ib778e90d072143ab653789be0ff9ea8805024455
+---
+ core/java/android/app/WindowConfiguration.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/java/android/app/WindowConfiguration.java b/core/java/android/app/WindowConfiguration.java
+index 050aa93d..1239ca57 100644
+--- a/core/java/android/app/WindowConfiguration.java
++++ b/core/java/android/app/WindowConfiguration.java
+@@ -689,7 +689,7 @@ public class WindowConfiguration implements Parcelable, Comparable<WindowConfigu
+      * @hide
+      */
+     public boolean hasWindowDecorCaption() {
+-        if (SystemProperties.getBoolean("persist.waydroid.multi_windows", false)) {
++        if (true /*SystemProperties.getBoolean("persist.waydroid.multi_windows", false)*/) {
+             return (mWindowingMode == WINDOWING_MODE_FREEFORM
+                 || mWindowingMode == WINDOWING_MODE_FULLSCREEN
+                 || mWindowingMode == WINDOWING_MODE_UNDEFINED )
+-- 
+2.34.1
+
