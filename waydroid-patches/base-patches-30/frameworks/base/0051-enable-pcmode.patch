@@ -1,0 +1,29 @@
+From 9576e481c7221fa20aa19a6048b62163204c7ba5 Mon Sep 17 00:00:00 2001
+From: huyang <huyang>
+Date: Wed, 2 Aug 2023 18:38:17 +0800
+Subject: [PATCH] enable pcmode
+
+no need :waydroid prop set persist.waydroid.multi_windows true
+
+Change-Id: I2490fcda98c97f204c2d6ad139b3bd11920a4933
+Signed-off-by: huyang <huyang>
+---
+ core/java/com/android/internal/BoringdroidManager.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/java/com/android/internal/BoringdroidManager.java b/core/java/com/android/internal/BoringdroidManager.java
+index 4783dafa..aca0097f 100644
+--- a/core/java/com/android/internal/BoringdroidManager.java
++++ b/core/java/com/android/internal/BoringdroidManager.java
+@@ -52,7 +52,7 @@ public class BoringdroidManager {
+     }
+ 
+     public static boolean isPCModeEnabled() {
+-        return SystemProperties.getBoolean("persist.waydroid.multi_windows", false);
++        return true; //SystemProperties.getBoolean("persist.waydroid.multi_windows", false);
+     }
+ 
+     private static boolean isInPCModeDisallowedList(String packageName) {
+-- 
+2.34.1
+
