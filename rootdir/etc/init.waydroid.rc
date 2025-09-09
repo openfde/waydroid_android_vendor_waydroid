@@ -44,6 +44,7 @@ service vendor.hwcomposer-2-1 /vendor/bin/hw/android.hardware.graphics.composer@
     group system graphics drmrpc
     capabilities SYS_NICE
     onrestart restart surfaceflinger
+    onrestart restart task-hal-1-0
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.camera-provider-2-4 /vendor/bin/hw/android.hardware.camera.provider@2.4-service
